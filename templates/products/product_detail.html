@@ -17,7 +17,7 @@
             <h1 class="font-weight-bold">{{ product.name }}</h1>
             <h2>R$ {{ product.price }}</h2>
             <p>{{ product.description }}</p>
-            <form class="form-group" action="" method="post">
+            <form class="form-group" action="{% url 'products:cart_add' product.id %}" method="post">
                 <p class="form-inline">
                 </p>
                 {% csrf_token %}
@@ -25,8 +25,8 @@
             </form>
             <p>
                 Voltar para o catálogo de
-                <a class="text-decoration-none" href="">
-                    {{ product.category.name }}
+                <a class="text-decoration-none" href="{% url 'products:categories' product.category %}">
+                    {{ product.category }}
                 </a>
             </p>
         </div>

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'products',
     # Apps de Terceiros
     'debug_toolbar',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
@@ -149,3 +151,4 @@ import socket  # noqa
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
 
+CART_SESSION_ID = 'cart'

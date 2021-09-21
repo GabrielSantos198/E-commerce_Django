@@ -13,8 +13,8 @@
                     Todos os produtos
                 </a>
 
-                {% for cat in object_list %}
-                    <a class="text-decoration-none list-group-item list-group-item-light" href="{% url 'products:detail' cat.slug %}">
+                {% for cat in categories %}
+                    <a class="text-decoration-none list-group-item list-group-item-light" href="{% url 'products:categories' cat.slug %}">
                         {{ cat.name }}
                     </a>
                 {% endfor %}

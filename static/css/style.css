@@ -3,3 +3,19 @@ body {
     overflow-x: hidden;
     overflow-wrap: break-word;
 }
+
+
+.change{
+  display: flex;
+}
+
+
+.add, .remove{
+  font-size: 23px;
+}
+
+
+.change p{
+  padding: 4px 8px 0 8px;
+}
+
