@@ -28,13 +28,18 @@
                     </a>
                 </td>
                 <td class="align-middle change">
-										<a href="{% url 'products:item_increment' value.product_id %}" class="add">+</a>
-                        <p>{{ value.quantity }}</p>
-                        {% if value.quantity > 1 %}
-                            <a href="{% url 'products:item_decrement' value.product_id %}" class="remove">-</a>
-                        {% else %}
-                            <a href="{% url 'products:item_clear' key %}" class="remove">-</a>
-                        {% endif %}
+                    {% if value.quantity < 6 %}
+                        <a href="{% url 'products:item_increment' value.product_id %}" class="add">+</a>
+                    {% else %}
+                        <p class="add">max</p>
+                    {% endif %}
+
+                    <p class="quant">{{ value.quantity }}</p>
+                    {% if value.quantity > 1 %}
+                        <a href="{% url 'products:item_decrement' value.product_id %}" class="remove">-</a>
+                    {% else %}
+                        <a href="{% url 'products:item_clear' key %}" class="remove">-</a>
+                    {% endif %}
                 </td>
                 <td class="align-middle">R$ {{ value.price }}</td>
                 <td class="align-middle">R$ {{ value.price|multiply:value.quantity }}0</td>
@@ -58,7 +63,7 @@
     <p class="text-right">
     <a class="btn btn-danger" href="{% url 'products:cart_clear' %}">Limpar Carrinho</a>
         <a class=" btn btn-primary" href="{% url 'products:list' %}">Continuar comprando</a>
-        <a class="btn btn-success" href="">Finalizar compra</a>
+        <a class="btn btn-success" href="{% url 'orders:create' %}">Finalizar compra</a>
     </p>
     {% else %}
         <p>O carrinho está vazio!</p>

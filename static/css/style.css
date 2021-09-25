@@ -12,10 +12,13 @@ body {
 
 .add, .remove{
   font-size: 23px;
+  color: #000;
 }
 
 
-.change p{
-  padding: 4px 8px 0 8px;
+.change .quant{
+  margin: 0 8px 0 8px;
+  padding: 5px 8px 0 8px;
+  border: .1px solid grey;
 }
 

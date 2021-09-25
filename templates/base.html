@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 {% load static %}
+{% load cart_tag %}
 
 <head>
     <meta charset="utf-8" />
@@ -28,7 +29,7 @@
                         <a href="{% url 'products:list' %}" class="nav-link lead mr-4 font-weight-bold">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'products:cart_detail' %}" class="nav-link lead mr-4 font-weight-bold">Carrinho</a>
+                      <a href="{% url 'products:cart_detail' %}" class="nav-link lead mr-4 font-weight-bold">Carrinho <span class="badge badge-secondary">{{ request.session.cart|length }}</span></a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'pages:about' %}" class="nav-link lead mr-4 font-weight-bold">Sobre Nós</a>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% load cart_tag %}
+
+{% block title %}Checkout{% endblock title %}
+
+{% block content %}
+
+<div class="container my-3">
+    <h1 class="font-weight-bold">Checkout</h1>
+    {% if request.session.cart %}
+    <div class="row">
+        <div class="col-lg-6">
+            {% crispy form %}
+        </div>
+        <div class="col-lg-6">
+          <div class="card border-0 bg-light p-4">
+            <h4>Resumo do Pedido</h4>
+            <ul class="list-group list-group-flush">
+						{% for key,value in request.session.cart.items %}
+                <li class="list-group-item bg-light">
+                  {{ value.quantity }}x {{ value.name }}
+                  <span class="float-right">R$ {{ value.price|multiply:value.quantity }}</span>
+                </li>
+              {% endfor %}
+            <li class="font-weight-bold list-group-item bg-light">Total
+                <span class="float-right">R$ {{ cart_total_amount }}0</span>
+            </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    {% else %}
+    <p>Seu carrinho está vazio.</p>
+    {% endif %}
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script src="https://unpkg.com/imask@6.0.7/dist/imask.js"></script>
+<script src="{% static 'js/order-form.js' %}"></script>
+{% endblock script %}
